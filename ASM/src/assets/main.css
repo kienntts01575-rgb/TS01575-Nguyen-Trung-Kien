@@ -1,0 +1,17 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.card {
+  border-radius: 12px;
+}
+
+.post-image {
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.post-content {
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
