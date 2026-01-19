@@ -1,5 +1,6 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
+import trang from './components/trang.vue'
 </script>
 
 <template>
@@ -11,7 +12,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="18 - Nguyen Trung Kien" />
+  <trang msg="18 - Nguyen Trung Kien" />
 </template>
 
 <style scoped>

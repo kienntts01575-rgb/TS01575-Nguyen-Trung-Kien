@@ -13,6 +13,74 @@
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
     <script src="js/bootstrap.bundle.min.js"></script>
+
+<style>
+      
+
+        /* ===== CHUYÊN MỤC ===== */
+        .category-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .category-list li a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #333;
+            transition: 0.3s;
+        }
+
+        .category-list li a:hover {
+            background: #00a8c6;
+            color: #fff;
+        }
+
+        .category-list .badge {
+            background: #00a8c6;
+            color: #fff;
+            border-radius: 12px;
+            padding: 3px 8px;
+            font-size: 12px;
+        }
+
+        .category-list li a:hover .badge {
+            background: #fff;
+            color: #00a8c6;
+        }
+
+        /* ===== BÀI VIẾT NỔI BẬT ===== */
+        .featured-post {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .featured-post:last-child {
+            border-bottom: none;
+        }
+
+        .featured-post img {
+            width: 55px;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .featured-post p {
+            font-size: 13px;
+            margin: 4px 0 0;
+            color: #666;
+        }
+    </style>
+
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -146,18 +214,28 @@
         <!-- ===== LEFT ===== -->
         <div class="col-md-3">
 
-            <h6 class="text-info">Chuyên mục</h6>
-            <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between">
-                    Chế độ tập <span class="badge bg-info">12</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                    Chế độ dinh dưỡng <span class="badge bg-info">15</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                    Cẩm nang cuộc sống <span class="badge bg-info">99</span>
-                </li>
-            </ul>
+            <h5 class="sidebar-title">Chuyên mục</h5>
+
+                    <ul class="category-list">
+                        <li>
+                            <a href="#">
+                                Chế độ tập
+                                <span class="badge">12</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Chế độ dinh dưỡng
+                                <span class="badge">15</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Cẩm nang cuộc sống
+                                <span class="badge">99</span>
+                            </a>
+                        </li>
+                    </ul>
 
             <h6 class="text-info">Bài viết nổi bật</h6>
 
