@@ -22,7 +22,7 @@ const logout = () => {
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container-fluid px-4">
-      <router-link class="navbar-brand" to="/">MyBlog</router-link>
+      <router-link class="navbar-brand" to="/">New</router-link>
 
       <ul class="navbar-nav ms-auto">
         <template v-if="!currentUser">

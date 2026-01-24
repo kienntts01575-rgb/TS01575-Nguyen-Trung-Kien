@@ -4,7 +4,11 @@
 <h1>{{ greeting }}</h1>
 
 <!-- Tạo nút thay đổi nội dung -->
- <button v-bind:title="buttonTitle" @click="changeGreeting">Click để thayđổi</button>
+ <button v-bind:title="buttonTitle" @click="changeGreeting">Click để thay đổi
+    
+ </button>
+
+ 
 </template>
 
 <script>

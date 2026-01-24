@@ -7,7 +7,7 @@ import bai4 from './components/bai4.vue';
 
 <template>
   
-  <bai4 msg="Vite + Vue" />
+  <bai3 msg="Vite + Vue" />
 </template>
 
 <style scoped>
