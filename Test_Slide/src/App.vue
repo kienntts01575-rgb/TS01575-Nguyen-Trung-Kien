@@ -2,11 +2,12 @@
 import HelloWorld from './components/HelloWorld.vue'
 import trang from './components/trang.vue'
 import test from './components/test.vue';
+import Slide5Bai1 from './components/Slide5-bai1.vue';
 </script>
 
 <template>
   
-  <test msg="18 - Nguyen Trung Kien" />
+  <slide5-bai1 msg="18 - Nguyen Trung Kien" />
 </template>
 
 <style scoped>
