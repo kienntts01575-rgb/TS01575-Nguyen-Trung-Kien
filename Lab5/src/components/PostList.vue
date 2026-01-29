@@ -13,7 +13,7 @@
       <p class="author">{{ post.author }}</p>
       <p>{{ post.content }}</p>
 
-      <button
+      <!-- <button
         class="btn btn-sm btn-outline-secondary me-2"
         @click="toggleStyle(post)"
       >
@@ -25,7 +25,7 @@
         @click="changeColor(post)"
       >
         Đổi màu
-      </button>
+      </button> -->
     </div>
   </div>
 </template>
