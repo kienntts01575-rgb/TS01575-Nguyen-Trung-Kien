@@ -1,0 +1,46 @@
+<style>
+/* Toàn bộ nền */
+body {
+  background-color: #f8f9fa;
+}
+
+/* Card bao ngoài */
+.card {
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+}
+
+/* Tiêu đề */
+h3 {
+  font-weight: 600;
+}
+
+/* Input */
+.form-control {
+  border-radius: 6px;
+  padding: 10px;
+}
+
+/* Nút Thêm công việc */
+.btn-primary {
+  padding: 6px 14px;
+  font-size: 14px;
+}
+
+/* Danh sách công việc */
+.list-group {
+  margin-top: 10px;
+}
+
+.list-group-item {
+  font-size: 15px;
+  padding: 10px 12px;
+}
+
+/* Nút Xóa */
+.btn-danger {
+  padding: 4px 10px;
+  font-size: 13px;
+  border-radius: 5px;
+}
+</style>
