@@ -1,88 +1,137 @@
-    <template>
-    <div v-if="!isLoggedIn" class="p-5 col-sm-4">
-        <h3>Form Đăng nhập</h3>
+<template>
+  <div class="wrapper">
+    <!-- FORM ĐĂNG NHẬP -->
+    <div v-if="!isLoggedIn">
+      <h2>Form Đăng nhập</h2>
 
-        <form @submit.prevent="login">
-        <div class="mb-3 mt-3">
-            <label>Email:</label>
-            <input
-            type="email"
-            class="form-control"
-            v-model="email"
-            placeholder="Nhập email"
-            />
-            <p v-if="emailError" style="color: red;">
-            {{ emailError }}
-            </p>
-        </div>
+      <form @submit.prevent="login">
+        <label>Email:</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nhập email"
+          v-model="email"
+        />
+        <p v-if="emailError" class="error">{{ emailError }}</p>
 
-        <div class="mb-3">
-            <label>Mật khẩu:</label>
-            <input
-            type="password"
-            class="form-control"
-            v-model="password"
-            placeholder="Nhập mật khẩu"
-            />
-            <p v-if="passwordError" style="color: red;">
-            {{ passwordError }}
-            </p>
-        </div>
+        <label>Mật khẩu:</label>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Nhập mật khẩu"
+          v-model="password"
+        />
+        <p v-if="passwordError" class="error">{{ passwordError }}</p>
 
         <button type="submit" class="btn btn-primary">
-            Đăng nhập
+          Đăng nhập
         </button>
-        </form>
+      </form>
     </div>
 
-    <div v-else class="p-5 col-sm-5">
-        <h3>Chào mừng, {{ email }}!</h3>
-        <button @click="logout" class="btn btn-primary">
+    <!-- SAU KHI ĐĂNG NHẬP -->
+    <div v-else>
+      <h2>Chào mừng, {{ email }}!</h2>
+      <button class="btn btn-primary" @click="logout">
         Đăng xuất
-        </button>
+      </button>
     </div>
-    </template>
+  </div>
+</template>
 
-    <script setup>
-    import { ref } from 'vue'
+<script setup>
+import { ref } from 'vue'
 
-    const isLoggedIn = ref(false)
-    const email = ref('')
-    const password = ref('')
+const email = ref('')
+const password = ref('')
+const emailError = ref('')
+const passwordError = ref('')
+const isLoggedIn = ref(false)
 
-    const emailError = ref('')
-    const passwordError = ref('')
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const login = () => {
+  // reset lỗi
+  emailError.value = ''
+  passwordError.value = ''
 
-    const login = () => {
-    // Reset lỗi
-    emailError.value = ''
-    passwordError.value = ''
+  // validate email
+  if (!email.value) {
+    emailError.value = 'Email không được để trống'
+  } else if (!emailRegex.test(email.value)) {
+    emailError.value = 'Email không đúng định dạng'
+  }
 
-    // Validate email
-    if (!email.value) {
-        emailError.value = 'Email là bắt buộc.'
-    } else if (!emailRegex.test(email.value)) {
-        emailError.value = 'Vui lòng nhập email hợp lệ.'
-    }
+  // validate mật khẩu
+  if (!password.value) {
+    passwordError.value = 'Mật khẩu không được để trống'
+  }
 
-    // Validate mật khẩu
-    if (!password.value) {
-        passwordError.value = 'Mật khẩu là bắt buộc.'
-    }
+  // nếu hợp lệ
+  if (!emailError.value && !passwordError.value) {
+    isLoggedIn.value = true
+  }
+}
 
-    // Nếu không có lỗi
-    if (!emailError.value && !passwordError.value) {
-        isLoggedIn.value = true
-    }
-    }
+const logout = () => {
+  isLoggedIn.value = false
+  email.value = ''
+  password.value = ''
+  emailError.value = ''
+  passwordError.value = ''
+}
+</script>
 
-    const logout = () => {
-    isLoggedIn.value = false
-    email.value = ''
-    password.value = ''
-    emailError.value = ''
-    passwordError.value = ''
-    }
-    </script>
+<style scoped>
+.wrapper {
+  width: 400px;
+  margin: 40px auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-top: 10px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.btn {
+  margin-top: 15px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #0d6efd;
+  color: white;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+}
+</style>

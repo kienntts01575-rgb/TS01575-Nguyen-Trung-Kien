@@ -1,15 +1,14 @@
 <template>
-  <div class="container mt-4">
-    <LoginComponent
-      v-if="!isLoggedIn"
-      @login-success="handleLogin"
-    />
+  <LoginComponent
+    v-if="!isLoggedIn"
+    @login="handleLogin"
+  />
 
-    <CommentComponent
-      v-else
-      :username="username"
-    />
-  </div>
+  <CommentComponent
+    v-else
+    :username="username"
+    @logout="handleLogout"
+  />
 </template>
 
 <script setup>
@@ -23,5 +22,10 @@ const username = ref('')
 const handleLogin = (name) => {
   username.value = name
   isLoggedIn.value = true
+}
+
+const handleLogout = () => {
+  username.value = ''
+  isLoggedIn.value = false
 }
 </script>

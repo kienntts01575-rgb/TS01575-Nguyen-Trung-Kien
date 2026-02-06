@@ -9,32 +9,17 @@
         <form @submit.prevent="saveStudent">
           <div class="mb-3">
             <label class="form-label">Họ tên:</label>
-            <input
-              type="text"
-              class="form-control"
-              v-model="student.name"
-              required
-            />
+            <input type="text" class="form-control" v-model="student.name" required />
           </div>
 
           <div class="mb-3">
             <label class="form-label">Điểm:</label>
-            <input
-              type="number"
-              class="form-control"
-              v-model="student.score"
-              required
-            />
+            <input type="number" class="form-control" v-model="student.score" required />
           </div>
 
           <div class="mb-3">
             <label class="form-label">Ngày sinh:</label>
-            <input
-              type="date"
-              class="form-control"
-              v-model="student.dob"
-              required
-            />
+            <input type="date" class="form-control" v-model="student.dob" required />
           </div>
 
           <button class="btn btn-success">
@@ -50,8 +35,10 @@
         <table class="table">
           <thead>
             <tr>
+              <th>STT</th>
               <th>Họ và tên</th>
               <th>Điểm</th>
+              <th>TT</th>
               <th>Ngày sinh</th>
               <th></th>
             </tr>
@@ -59,20 +46,23 @@
 
           <tbody>
             <tr v-for="(s, index) in students" :key="index">
+              <td>{{ index + 1 }}</td>
               <td>{{ s.name }}</td>
               <td>{{ s.score }}</td>
+              <td>
+                <span v-if="s.score >= 5" class="badge bg-success">
+                  Đạt
+                </span>
+                <span v-else class="badge bg-danger">
+                  Rớt
+                </span>
+              </td>
               <td>{{ s.dob }}</td>
               <td>
-                <button
-                  class="btn btn-warning btn-sm me-2"
-                  @click="editStudent(index)"
-                >
+                <button class="btn btn-warning btn-sm me-2" @click="editStudent(index)">
                   Sửa
                 </button>
-                <button
-                  class="btn btn-danger btn-sm"
-                  @click="deleteStudent(index)"
-                >
+                <button class="btn btn-danger btn-sm" @click="deleteStudent(index)">
                   Xóa
                 </button>
               </td>

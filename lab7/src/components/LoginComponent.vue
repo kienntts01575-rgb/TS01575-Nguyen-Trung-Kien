@@ -1,29 +1,15 @@
 <template>
-  <div class="p-5 col-sm-4">
+  <div class="box">
     <h3>Đăng nhập</h3>
 
-    <form @submit.prevent="login">
-      <div class="mb-3">
-        <label>Tên đăng nhập:</label>
-        <input
-          type="text"
-          class="form-control"
-          v-model="username"
-        />
-      </div>
+    <form @submit.prevent="handleLogin">
+      <label>Tên đăng nhập:</label>
+      <input type="text" v-model="username" />
 
-      <div class="mb-3">
-        <label>Mật khẩu:</label>
-        <input
-          type="password"
-          class="form-control"
-          v-model="password"
-        />
-      </div>
+      <label>Mật khẩu:</label>
+      <input type="password" v-model="password" />
 
-      <button class="btn btn-primary" type="submit">
-        Đăng nhập
-      </button>
+      <button type="submit" class="btn btn-primary">Đăng nhập</button>
     </form>
   </div>
 </template>
@@ -31,14 +17,33 @@
 <script setup>
 import { ref } from 'vue'
 
-const emit = defineEmits(['login-success'])
+const emit = defineEmits(['login'])
 
 const username = ref('')
 const password = ref('')
 
-const login = () => {
+const handleLogin = () => {
   if (username.value && password.value) {
-    emit('login-success', username.value)
+    emit('login', username.value)
   }
 }
 </script>
+
+<style scoped>
+.box {
+  width: 300px;
+  margin: 40px auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+input {
+  width: 100%;
+  margin: 6px 0;
+  padding: 6px;
+}
+
+button {
+  margin-top: 10px;
+}
+</style>

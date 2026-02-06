@@ -14,12 +14,12 @@
       </div>
 
       <div class="mb-3">
-        <label class="form-label">Tuổi:</label>
+        <label class="form-label">Nam sinh:</label>
         <input
           v-model="userInfo.age"
           type="number"
           class="form-control"
-          placeholder="Nhập tuổi"
+          placeholder="Nhập nam sinh"
         />
       </div>
 
@@ -38,7 +38,7 @@
     <div class="mt-4 p-4 bg-dark text-white rounded">
       <h2>Thông tin đã nhập:</h2>
       <p><strong>Họ và Tên:</strong> {{ userInfo.name }}</p>
-      <p><strong>Tuổi:</strong> {{ userInfo.age }}</p>
+      <p><strong>Tuổi:</strong> {{ 1995-2026 .yead }}</p>
       <p><strong>Email:</strong> {{ userInfo.email }}</p>
     </div>
   </div>

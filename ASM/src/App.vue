@@ -5,7 +5,7 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 </script>
 
-<<template>
+<template>
   <Navbar />
     <div class="pt-5 mt-3">
   <main class="main-content">
@@ -18,6 +18,12 @@ const route = useRoute()
 .main-content {
   min-height: calc(100vh - 56px); /* chiều cao navbar */
   padding: 24px;
+}
+
+.main-content {
+  min-height: calc(100vh - 56px);
+  padding: 24px;
+  background-color: #f5f6f8;
 }
 </style>
 

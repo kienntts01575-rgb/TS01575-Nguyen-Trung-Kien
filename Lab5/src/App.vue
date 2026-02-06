@@ -1,9 +1,9 @@
 <template>
-  <div class="container-fluid mt-5 px-5 text-start">
+  <!-- <div class="container-fluid mt-5 px-5 text-start">
     <CreatePost @add-post="addPost" />
     <PostList :posts="posts" />
-  </div>
-  <!-- <bai2 /> -->
+  </div> -->
+  <bai3 />
 </template>
 
 <script setup>

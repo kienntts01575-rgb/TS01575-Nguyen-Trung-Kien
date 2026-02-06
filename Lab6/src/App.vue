@@ -7,7 +7,7 @@ import bai4 from './components/bai4.vue';
 </script>
 
 <template>
-  <bai4 />
+  <bai1 />
 </template>
 
 <style scoped>
