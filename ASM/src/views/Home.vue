@@ -15,66 +15,110 @@ const deletePost = (id) => {
   localStorage.setItem('posts', JSON.stringify(posts.value))
 }
 
-// format ngày giờ cho đẹp
 const formatDate = (date) => {
-  return new Date(date).toLocaleString('vi-VN')
+  return new Date(date).toLocaleDateString('vi-VN')
 }
 </script>
 
 <template>
-  <div class="container-fluid px-5 mt-4">
+  <div class="container-fluid px-4 mt-4">
     <div class="row">
-      <div class="col-lg-8 mx-auto">
-    <h3 class="mb-3">📰 Danh sách bài viết</h3>
+      <div class="col-xl-7 col-lg-8 col-md-10 mx-auto">
 
-    <!-- Không có bài -->
-    <div v-if="posts.length === 0" class="alert alert-info">
-      Chưa có bài viết nào
-    </div>
+        <h4 class="mb-4 fw-bold">📰 Danh sách bài viết</h4>
 
-    <!-- Có bài -->
-    <div
-      v-for="post in posts"
-      :key="post.id"
-      class="card mb-4 shadow-sm"
-    >
-      <!-- ẢNH BÀI VIẾT -->
-    <img
-    v-if="post.image"
-    :src="post.image"
-    class="card-img-top post-image"
-  />
-
-  <div class="card-body">
-    <h5 class="card-title">{{ post.title }}</h5>
-
-    <p class="text-muted small mb-2">
-      ✍ {{ post.author }} · {{ formatDate(post.createdAt) }}
-    </p>
-
-    <p class="card-text text-truncate">
-      {{ post.content }}
-    </p>
-
-    <div class="d-flex gap-2">
-      <router-link
-        :to="`/post/${post.id}`"
-        class="btn btn-sm btn-outline-primary"
-      >
-        Xem chi tiết
-      </router-link>
-
-      <button
-        v-if="currentUser && post.authorEmail === currentUser.email"
-        class="btn btn-sm btn-outline-danger"
-        @click="deletePost(post.id)"
-      >
-        Xóa
-      </button>
-    </div>
-  </div>
+        <!-- Không có bài -->
+        <div v-if="posts.length === 0" class="alert alert-info">
+          Chưa có bài viết nào
         </div>
+
+        <!-- Danh sách bài -->
+        <div
+          v-for="post in posts"
+          :key="post.id"
+          class="post-item mb-3 p-3 rounded shadow-sm bg-white"
+        >
+          <div class="d-flex gap-3">
+
+            <!-- Ảnh -->
+            <img
+              v-if="post.image"
+              :src="post.image"
+              class="post-thumb"
+            />
+
+            <!-- Nội dung -->
+            <div class="flex-grow-1">
+              <h6 class="fw-bold mb-1">
+                {{ post.title }}
+              </h6>
+
+              <p class="text-muted small mb-1">
+                ✍ {{ post.author }} · {{ formatDate(post.createdAt) }}
+              </p>
+
+              <p class="text-secondary text-truncate-2 mb-2">
+                {{ post.content }}
+              </p>
+
+              <div class="d-flex align-items-center gap-2">
+                <router-link
+                  :to="`/post/${post.id}`"
+                  class="btn btn-sm btn-outline-primary"
+                >
+                  Xem chi tiết
+                </router-link>
+
+                <!-- Nút xóa (áp dụng cho bài cũ + mới) -->
+                <button
+                  v-if="
+                    currentUser &&
+                    (
+                      post.authorEmail === currentUser.email ||
+                      post.author === currentUser.name
+                    )
+                  "
+                  class="btn btn-sm btn-outline-danger"
+                  @click="deletePost(post.id)"
+                >
+                  Xóa
+                </button>
+
+                <span class="ms-auto text-muted small">
+                  ❤️ {{ post.likes?.length || 0 }}
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.post-thumb {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-item {
+  transition: all 0.2s ease;
+}
+
+.post-item:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-2px);
+}
+</style>
